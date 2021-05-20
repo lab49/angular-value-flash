@@ -7,7 +7,7 @@
     "components": [
         {
             "name": "ValueFlashComponent",
-            "id": "component-ValueFlashComponent-5158e142ef2c03a6120a2f808225e4d6",
+            "id": "component-ValueFlashComponent-9a03a5da7016da4bb352f74804b7e518",
             "file": "projects/value-flash/src/lib/value-flash.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -17,20 +17,164 @@
             "selector": "lab49-value-flash",
             "styleUrls": [],
             "styles": [],
-            "template": "<p>\n  value-flash works!\n</p>\n",
-            "templateUrl": [],
+            "templateUrl": [
+                "./value-flash.component.html"
+            ],
             "viewProviders": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "downColor",
+                    "description": "<p>Color value when the component flashes &#39;down&#39;.</p>\n",
+                    "line": 26,
+                    "type": "string"
+                },
+                {
+                    "name": "formatter",
+                    "description": "<p>One of the built in formatters.</p>\n",
+                    "line": 31,
+                    "type": "\"currency\" | \"percentage\" | \"number\""
+                },
+                {
+                    "name": "stylePrefix",
+                    "defaultValue": "'rvf_Flash'",
+                    "description": "<p>Pass your own formatter function.</p>\n",
+                    "line": 40,
+                    "type": "string"
+                },
+                {
+                    "name": "timeout",
+                    "defaultValue": "200",
+                    "description": "<p>Amount of time the flashed state is visible for, in milliseconds.</p>\n",
+                    "line": 45,
+                    "type": "number"
+                },
+                {
+                    "name": "transition",
+                    "description": "<p>Custom CSS transition property.</p>\n",
+                    "line": 50,
+                    "type": "string"
+                },
+                {
+                    "name": "transitionLength",
+                    "description": "<p>Transition length, in milliseconds.</p>\n",
+                    "line": 55,
+                    "type": "number"
+                },
+                {
+                    "name": "upColor",
+                    "description": "<p>Color value when the component flashes &#39;up&#39;.</p>\n",
+                    "line": 60,
+                    "type": "string"
+                },
+                {
+                    "name": "value",
+                    "defaultValue": "0",
+                    "description": "<p>Value to display. The only required prop.</p>\n",
+                    "line": 65,
+                    "type": "number"
+                }
+            ],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "animationTimeout",
+                    "type": "NodeJS.Timeout",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "valueHolder",
+                    "type": "ElementRef<HTMLElement>",
+                    "optional": false,
+                    "description": "",
+                    "line": 67,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'valueHolder'"
+                        }
+                    ],
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
             "methodsClass": [
+                {
+                    "name": "clearFlashingState",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 108,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "handleValueChange",
+                    "args": [
+                        {
+                            "name": "valueChange",
+                            "type": "SimpleChange"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 79,
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "valueChange",
+                            "type": "SimpleChange",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnChanges",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 96,
+                    "modifierKind": [
+                        114
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
                 {
                     "name": "ngOnInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 17
+                    "line": 102,
+                    "modifierKind": [
+                        114
+                    ]
                 }
             ],
             "hostBindings": [],
@@ -38,7 +182,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'lab49-value-flash',\n  template: `\n    <p>\n      value-flash works!\n    </p>\n  `,\n  styles: [\n  ]\n})\nexport class ValueFlashComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "sourceCode": "import {\n  Component,\n  ElementRef,\n  Input,\n  OnChanges,\n  OnInit,\n  SimpleChange,\n  SimpleChanges,\n  ViewChild,\n} from '@angular/core';\n\n@Component({\n  selector: 'lab49-value-flash',\n  templateUrl: './value-flash.component.html',\n  styles: [],\n})\nexport class ValueFlashComponent implements OnInit, OnChanges {\n  // #region Properties (10)\n\n  private animationTimeout!: NodeJS.Timeout;\n\n  /**\n   * Color value when the component flashes 'down'.\n   */\n  @Input()\n  downColor?: string;\n  /**\n   * One of the built in formatters.\n   */\n  @Input()\n  formatter?: 'currency' | 'percentage' | 'number';\n  /**\n   * Pass your own formatter function.\n   */\n  //formatterFn?: Formatter;\n  /**\n   * Prefix for the CSS selectors in the DOM.\n   */\n  @Input()\n  public stylePrefix: string = 'rvf_Flash';\n  /**\n   * Amount of time the flashed state is visible for, in milliseconds.\n   */\n  @Input()\n  public timeout: number = 200;\n  /**\n   * Custom CSS transition property.\n   */\n  @Input()\n  transition?: string;\n  /**\n   * Transition length, in milliseconds.\n   */\n  @Input()\n  transitionLength?: number;\n  /**\n   * Color value when the component flashes 'up'.\n   */\n  @Input()\n  upColor?: string;\n  /**\n   * Value to display. The only required prop.\n   */\n  @Input()\n  public value: number = 0;\n  @ViewChild('valueHolder')\n  public valueHolder!: ElementRef<HTMLElement>;\n\n  // #endregion Properties (10)\n\n  // #region Constructors (1)\n\n  constructor() {}\n\n  // #endregion Constructors (1)\n\n  // #region Public Methods (3)\n\n  public handleValueChange(valueChange: SimpleChange) {\n    if (valueChange.currentValue > valueChange.previousValue) {\n      this.valueHolder.nativeElement.classList.add(\n        `${this.stylePrefix}--flashing-up`\n      );\n    } else if (valueChange.currentValue < valueChange.previousValue) {\n      this.valueHolder.nativeElement.classList.add(\n        `${this.stylePrefix}--flashing-down`\n      );\n    }\n    //clearTimeout(this.animationTimeout);\n    this.animationTimeout = setTimeout(\n      () => this.clearFlashingState(),\n      this.timeout\n    );\n  }\n\n  public ngOnChanges(changes: SimpleChanges) {\n    if (changes.value) {\n      this.handleValueChange(changes.value);\n    }\n  }\n\n  public ngOnInit(): void {}\n\n  // #endregion Public Methods (3)\n\n  // #region Private Methods (1)\n\n  private clearFlashingState() {\n    this.valueHolder.nativeElement.classList.remove(\n      `${this.stylePrefix}--flashing-down`\n    );\n    this.valueHolder.nativeElement.classList.remove(\n      `${this.stylePrefix}--flashing-up`\n    );\n  }\n\n  // #endregion Private Methods (1)\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -46,11 +190,13 @@
                 "name": "constructor",
                 "description": "",
                 "args": [],
-                "line": 13
+                "line": 67
             },
             "implements": [
-                "OnInit"
-            ]
+                "OnInit",
+                "OnChanges"
+            ],
+            "templateData": "<div #valueHolder>{{value}}</div>"
         }
     ],
     "modules": [
@@ -95,6 +241,14 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "AllTests",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/ValueFlash.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "context",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -103,43 +257,11 @@
                 "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
             },
             {
-                "name": "Large",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "stories/ValueFlash.stories.ts",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "Primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "stories/ValueFlash.stories.ts",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
                 "name": "require",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "projects/value-flash/src/test.ts",
                 "type": "literal type"
-            },
-            {
-                "name": "Secondary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "stories/ValueFlash.stories.ts",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "Small",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "stories/ValueFlash.stories.ts",
-                "type": "",
-                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "Template",
@@ -150,10 +272,49 @@
                 "defaultValue": "(args: ValueFlashComponent) => ({\r\n  props: args,\r\n})"
             }
         ],
-        "functions": [],
+        "functions": [
+            {
+                "name": "moduleMetadata",
+                "file": "stories/ValueFlash.stories.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "description": "",
+                "args": [
+                    {
+                        "name": "arg0"
+                    }
+                ],
+                "jsdoctags": [
+                    {
+                        "name": "arg0",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        ],
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
+            "stories/ValueFlash.stories.ts": [
+                {
+                    "name": "AllTests",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/ValueFlash.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/ValueFlash.stories.ts",
+                    "type": "Story<ValueFlashComponent>",
+                    "defaultValue": "(args: ValueFlashComponent) => ({\r\n  props: args,\r\n})"
+                }
+            ],
             "projects/value-flash/src/test.ts": [
                 {
                     "name": "context",
@@ -170,57 +331,38 @@
                     "file": "projects/value-flash/src/test.ts",
                     "type": "literal type"
                 }
-            ],
+            ]
+        },
+        "groupedFunctions": {
             "stories/ValueFlash.stories.ts": [
                 {
-                    "name": "Large",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
+                    "name": "moduleMetadata",
                     "file": "stories/ValueFlash.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Primary",
                     "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "stories/ValueFlash.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Secondary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "stories/ValueFlash.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Small",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "stories/ValueFlash.stories.ts",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "stories/ValueFlash.stories.ts",
-                    "type": "Story<ValueFlashComponent>",
-                    "defaultValue": "(args: ValueFlashComponent) => ({\r\n  props: args,\r\n})"
+                    "subtype": "function",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "arg0"
+                        }
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "arg0",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 }
             ]
         },
-        "groupedFunctions": {},
         "groupedEnumerations": {},
         "groupedTypeAliases": {}
     },
     "routes": [],
     "coverage": {
-        "count": 0,
+        "count": 8,
         "status": "low",
         "files": [
             {
@@ -228,9 +370,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "ValueFlashComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/3",
-                "status": "low"
+                "coveragePercent": 50,
+                "coverageCount": "8/16",
+                "status": "medium"
             },
             {
                 "filePath": "projects/value-flash/src/test.ts",
@@ -254,10 +396,9 @@
             },
             {
                 "filePath": "stories/ValueFlash.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Large",
+                "type": "function",
+                "linksubtype": "function",
+                "name": "moduleMetadata",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -267,27 +408,7 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "stories/ValueFlash.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Secondary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "stories/ValueFlash.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Small",
+                "name": "AllTests",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

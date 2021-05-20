@@ -5,26 +5,14 @@ import { ValueFlashComponent } from 'projects/value-flash/src/public-api';
 export default {
   title: 'Components/Value Flash',
   component: ValueFlashComponent,
-  argTypes: {
-  },
+  argTypes: {},
 } as Meta;
 
 const Template: Story<ValueFlashComponent> = (args: ValueFlashComponent) => ({
   props: args,
 });
 
-export const Primary = Template.bind({});
-Primary.args = {
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-};
-
-export const Large = Template.bind({});
-Large.args = {
-};
-
-export const Small = Template.bind({});
-Small.args = {
+export const Basic = Template.bind({});
+Basic.args = {
+    value: 1
 };

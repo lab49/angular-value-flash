@@ -1,16 +1,9 @@
 import { NgModule } from '@angular/core';
 import { ValueFlashComponent } from './value-flash.component';
 
-
-
 @NgModule({
-  declarations: [
-    ValueFlashComponent
-  ],
-  imports: [
-  ],
-  exports: [
-    ValueFlashComponent
-  ]
+  declarations: [ValueFlashComponent],
+  imports: [],
+  exports: [ValueFlashComponent],
 })
-export class ValueFlashModule { }
+export class ValueFlashModule {}
