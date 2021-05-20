@@ -3,5 +3,46 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "value-flash": {
+      "projectType": "library",
+      "root": "projects/value-flash",
+      "sourceRoot": "projects/value-flash/src",
+      "prefix": "lab49",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/value-flash/tsconfig.lib.json",
+            "project": "projects/value-flash/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/value-flash/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/value-flash/src/test.ts",
+            "tsConfig": "projects/value-flash/tsconfig.spec.json",
+            "karmaConfig": "projects/value-flash/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/value-flash/tsconfig.lib.json",
+              "projects/value-flash/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "value-flash"
 }
