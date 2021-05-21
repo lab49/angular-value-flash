@@ -7,7 +7,7 @@
     "components": [
         {
             "name": "ValueFlashComponent",
-            "id": "component-ValueFlashComponent-eab4560df554a7d1bd2b6c6b1863a5aa",
+            "id": "component-ValueFlashComponent-81ce7ac3ac875fa9cacc4e47d0c57846",
             "file": "projects/value-flash/src/lib/value-flash.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -31,14 +31,13 @@
                 },
                 {
                     "name": "formatter",
-                    "defaultValue": "'number'",
+                    "defaultValue": "'default'",
                     "description": "<p>One of the built in formatters.</p>\n",
                     "line": 34,
-                    "type": "\"currency\" | \"percentage\" | \"number\""
+                    "type": "FormatterType"
                 },
                 {
                     "name": "formatterFn",
-                    "defaultValue": "formatters.default",
                     "description": "<p>Pass your own formatter function.</p>\n",
                     "line": 39,
                     "type": "Formatter"
@@ -87,7 +86,7 @@
             "propertiesClass": [
                 {
                     "name": "animationTimeout",
-                    "type": "NodeJS.Timeout",
+                    "type": "any",
                     "optional": false,
                     "description": "",
                     "line": 23,
@@ -100,7 +99,7 @@
                     "type": "ElementRef<HTMLElement>",
                     "optional": false,
                     "description": "",
-                    "line": 76,
+                    "line": 71,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -119,7 +118,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 124,
+                    "line": 131,
                     "modifierKind": [
                         112
                     ]
@@ -135,7 +134,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 96,
+                    "line": 103,
                     "modifierKind": [
                         114
                     ],
@@ -160,7 +159,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 112,
+                    "line": 119,
                     "modifierKind": [
                         114
                     ],
@@ -180,7 +179,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 118,
+                    "line": 125,
                     "modifierKind": [
                         114
                     ]
@@ -191,7 +190,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  ElementRef,\n  Input,\n  OnChanges,\n  OnInit,\n  SimpleChange,\n  SimpleChanges,\n  ViewChild,\n} from '@angular/core';\nimport { Formatter, formatters } from './formatters';\n\n@Component({\n  selector: 'lab49-value-flash',\n  templateUrl: './value-flash.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  styles: [],\n})\nexport class ValueFlashComponent implements OnInit, OnChanges {\n  // #region Properties (11)\n\n  private animationTimeout!: NodeJS.Timeout;\n\n  /**\n   * Color value when the component flashes 'down'.\n   */\n  @Input()\n  public downColor = 'red';\n  /**\n   * One of the built in formatters.\n   */\n  @Input()\n  formatter?: 'currency' | 'percentage' | 'number' = 'number';\n  /**\n   * Pass your own formatter function.\n   */\n  @Input()\n  public formatterFn: Formatter = formatters.default;\n  /**\n   * Prefix for the CSS selectors in the DOM.\n   */\n  @Input()\n  public stylePrefix: string = 'rvf_Flash';\n  /**\n   * Amount of time the flashed state is visible for, in milliseconds.\n   */\n  @Input()\n  public timeout: number = 200;\n  /**\n   * Custom CSS transition property.\n   */\n  @Input()\n  transition?: string;\n  /**\n   * Transition length, in milliseconds.\n   */\n  @Input()\n  public transitionLength = 100;\n  /**\n   * Color value when the component flashes 'up'.\n   */\n  @Input()\n  public upColor = 'green';\n  /**\n   * Value to display. The only required prop.\n   */\n  @Input()\n  public value: number = 0;\n\n  public get formattedValue() {\n    return this.formatterFn(this.value);\n  }\n\n  @ViewChild('valueHolder')\n  public valueHolderRef!: ElementRef<HTMLElement>;\n\n  // #endregion Properties (11)\n\n  // #region Constructors (1)\n\n  constructor() {}\n\n  // #endregion Constructors (1)\n\n  // #region Private Accessors (1)\n\n  private get valueHolder() {\n    return this.valueHolderRef.nativeElement;\n  }\n\n  // #endregion Private Accessors (1)\n\n  // #region Public Methods (3)\n\n  public handleValueChange(valueChange: SimpleChange) {\n    this.valueHolder.style.transition = '';\n    if (valueChange.currentValue > valueChange.previousValue) {\n      this.valueHolder.classList.add(`${this.stylePrefix}--flashing-up`);\n      this.valueHolder.style.backgroundColor = this.upColor;\n    } else if (valueChange.currentValue < valueChange.previousValue) {\n      this.valueHolder.classList.add(`${this.stylePrefix}--flashing-down`);\n      this.valueHolder.style.backgroundColor = this.downColor;\n    }\n    clearTimeout(this.animationTimeout);\n    this.animationTimeout = setTimeout(\n      () => this.clearFlashingState(),\n      this.timeout\n    );\n  }\n\n  public ngOnChanges(changes: SimpleChanges) {\n    if (changes.value && changes.value.previousValue != undefined) {\n      this.handleValueChange(changes.value);\n    }\n  }\n\n  public ngOnInit(): void {}\n\n  // #endregion Public Methods (3)\n\n  // #region Private Methods (1)\n\n  private clearFlashingState() {\n    this.valueHolder.style.transition = `background-color ${this.transitionLength}ms ease-in-out`;\n    this.valueHolder.classList.remove(`${this.stylePrefix}--flashing-down`);\n    this.valueHolder.classList.remove(`${this.stylePrefix}--flashing-up`);\n    this.valueHolder.style.backgroundColor = '';\n  }\n\n  // #endregion Private Methods (1)\n}\n",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  ElementRef,\n  Input,\n  OnChanges,\n  OnInit,\n  SimpleChange,\n  SimpleChanges,\n  ViewChild,\n} from '@angular/core';\nimport { Formatter, formatters, FormatterType } from './formatters';\n\n@Component({\n  selector: 'lab49-value-flash',\n  templateUrl: './value-flash.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  styles: [],\n})\nexport class ValueFlashComponent implements OnInit, OnChanges {\n  // #region Properties (11)\n\n  private animationTimeout!: any;\n\n  /**\n   * Color value when the component flashes 'down'.\n   */\n  @Input()\n  public downColor = 'red';\n  /**\n   * One of the built in formatters.\n   */\n  @Input()\n  public formatter: FormatterType = 'default';\n  /**\n   * Pass your own formatter function.\n   */\n  @Input()\n  public formatterFn?: Formatter;\n  /**\n   * Prefix for the CSS selectors in the DOM.\n   */\n  @Input()\n  public stylePrefix: string = 'rvf_Flash';\n  /**\n   * Amount of time the flashed state is visible for, in milliseconds.\n   */\n  @Input()\n  public timeout: number = 200;\n  /**\n   * Custom CSS transition property.\n   */\n  @Input()\n  transition?: string;\n  /**\n   * Transition length, in milliseconds.\n   */\n  @Input()\n  public transitionLength = 100;\n  /**\n   * Color value when the component flashes 'up'.\n   */\n  @Input()\n  public upColor = 'green';\n  /**\n   * Value to display. The only required prop.\n   */\n  @Input()\n  public value: number = 0;\n  @ViewChild('valueHolder')\n  public valueHolderRef!: ElementRef<HTMLElement>;\n\n  // #endregion Properties (11)\n\n  // #region Constructors (1)\n\n  constructor() {}\n\n  // #endregion Constructors (1)\n\n  // #region Public Accessors (2)\n\n  public get formattedValue() {\n    return this.usedFormatter(this.value);\n  }\n\n  public get usedFormatter() {\n    return this.formatterFn ?? formatters[this.formatter];\n  }\n\n  // #endregion Public Accessors (2)\n\n  // #region Private Accessors (1)\n\n  private get valueHolder() {\n    return this.valueHolderRef.nativeElement;\n  }\n\n  // #endregion Private Accessors (1)\n\n  // #region Public Methods (3)\n\n  public handleValueChange(valueChange: SimpleChange) {\n    this.valueHolder.style.transition = '';\n    if (valueChange.currentValue > valueChange.previousValue) {\n      this.valueHolder.classList.add(`${this.stylePrefix}--flashing-up`);\n      this.valueHolder.style.backgroundColor = this.upColor;\n    } else if (valueChange.currentValue < valueChange.previousValue) {\n      this.valueHolder.classList.add(`${this.stylePrefix}--flashing-down`);\n      this.valueHolder.style.backgroundColor = this.downColor;\n    }\n    clearTimeout(this.animationTimeout);\n    this.animationTimeout = setTimeout(\n      () => this.clearFlashingState(),\n      this.timeout\n    );\n  }\n\n  public ngOnChanges(changes: SimpleChanges) {\n    if (changes.value && changes.value.previousValue != undefined) {\n      this.handleValueChange(changes.value);\n    }\n  }\n\n  public ngOnInit(): void {}\n\n  // #endregion Public Methods (3)\n\n  // #region Private Methods (1)\n\n  private clearFlashingState() {\n    this.valueHolder.style.transition = `background-color ${this.transitionLength}ms ease-in-out`;\n    this.valueHolder.classList.remove(`${this.stylePrefix}--flashing-down`);\n    this.valueHolder.classList.remove(`${this.stylePrefix}--flashing-up`);\n    this.valueHolder.style.backgroundColor = '';\n  }\n\n  // #endregion Private Methods (1)\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -199,7 +198,7 @@
                 "name": "constructor",
                 "description": "",
                 "args": [],
-                "line": 76
+                "line": 71
             },
             "implements": [
                 "OnInit",
@@ -212,7 +211,16 @@
                         "name": "formattedValue",
                         "type": "",
                         "returnType": "",
-                        "line": 71
+                        "line": 83
+                    }
+                },
+                "usedFormatter": {
+                    "name": "usedFormatter",
+                    "getSignature": {
+                        "name": "usedFormatter",
+                        "type": "",
+                        "returnType": "",
+                        "line": 87
                     }
                 },
                 "valueHolder": {
@@ -221,7 +229,7 @@
                         "name": "valueHolder",
                         "type": "",
                         "returnType": "",
-                        "line": 88
+                        "line": 95
                     }
                 }
             },
@@ -270,7 +278,7 @@
     "miscellaneous": {
         "variables": [
             {
-                "name": "Basic",
+                "name": "BespokeFormatter",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "stories/ValueFlash.stories.ts",
@@ -294,6 +302,30 @@
                 "defaultValue": "(value: number) =>\r\n  Intl.NumberFormat('en', { style: 'currency', currency: 'USD' }).format(value)"
             },
             {
+                "name": "CurrencyFormatter",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/ValueFlash.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "CustomColors",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/ValueFlash.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/ValueFlash.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "defaultFormatter",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -306,7 +338,7 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "projects/value-flash/src/lib/formatters/index.ts",
-                "type": "object",
+                "type": "BasicFormatters",
                 "defaultValue": "{\r\n  default: defaultFormatter,\r\n  number: numberFormatter,\r\n  currency: currencyFormatter,\r\n  percentage: percentageFormatter,\r\n}"
             },
             {
@@ -318,12 +350,28 @@
                 "defaultValue": "(value: number) =>\r\n  Intl.NumberFormat('en').format(value)"
             },
             {
+                "name": "NumberFormatter",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/ValueFlash.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "percentageFormatter",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "projects/value-flash/src/lib/formatters/index.ts",
                 "type": "",
                 "defaultValue": "(value: number) =>\r\n  Intl.NumberFormat('en', {\r\n    style: 'percent',\r\n    // See: https://github.com/microsoft/TypeScript/issues/36533\r\n    // @ts-ignore\r\n    signDisplay: 'exceptZero',\r\n  }).format(value)"
+            },
+            {
+                "name": "PercentageFormatter",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/ValueFlash.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "require",
@@ -338,11 +386,20 @@
                 "subtype": "variable",
                 "file": "stories/ValueFlash.stories.ts",
                 "type": "Story<ValueFlashComponent>",
-                "defaultValue": "(args: ValueFlashComponent) => {\r\n  console.log(args);\r\n  const { value, upColor, downColor, stylePrefix, timeout, transitionLength } = args;\r\n  return {\r\n    props: { value, upColor, downColor, stylePrefix, timeout, transitionLength },\r\n  };\r\n}"
+                "defaultValue": "(args: ValueFlashComponent) => {\r\n  console.log(args);\r\n  const { value, upColor, downColor, stylePrefix, timeout, transitionLength, formatter, formatterFn } = args;\r\n  return {\r\n    props: { value, upColor, downColor, stylePrefix, timeout, transitionLength, formatter, formatterFn },\r\n  };\r\n}"
             }
         ],
         "functions": [],
         "typealiases": [
+            {
+                "name": "BasicFormatters",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "",
+                "file": "projects/value-flash/src/lib/formatters/index.ts",
+                "description": "",
+                "kind": 176
+            },
             {
                 "name": "Formatter",
                 "ctype": "miscellaneous",
@@ -351,13 +408,62 @@
                 "file": "projects/value-flash/src/lib/formatters/index.ts",
                 "description": "",
                 "kind": 162
+            },
+            {
+                "name": "FormatterType",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"currency\" | \"percentage\" | \"number\" | \"default\"",
+                "file": "projects/value-flash/src/lib/formatters/index.ts",
+                "description": "",
+                "kind": 168
             }
         ],
         "enumerations": [],
         "groupedVariables": {
             "stories/ValueFlash.stories.ts": [
                 {
-                    "name": "Basic",
+                    "name": "BespokeFormatter",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/ValueFlash.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "CurrencyFormatter",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/ValueFlash.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "CustomColors",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/ValueFlash.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/ValueFlash.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "NumberFormatter",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/ValueFlash.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "PercentageFormatter",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "stories/ValueFlash.stories.ts",
@@ -370,7 +476,7 @@
                     "subtype": "variable",
                     "file": "stories/ValueFlash.stories.ts",
                     "type": "Story<ValueFlashComponent>",
-                    "defaultValue": "(args: ValueFlashComponent) => {\r\n  console.log(args);\r\n  const { value, upColor, downColor, stylePrefix, timeout, transitionLength } = args;\r\n  return {\r\n    props: { value, upColor, downColor, stylePrefix, timeout, transitionLength },\r\n  };\r\n}"
+                    "defaultValue": "(args: ValueFlashComponent) => {\r\n  console.log(args);\r\n  const { value, upColor, downColor, stylePrefix, timeout, transitionLength, formatter, formatterFn } = args;\r\n  return {\r\n    props: { value, upColor, downColor, stylePrefix, timeout, transitionLength, formatter, formatterFn },\r\n  };\r\n}"
                 }
             ],
             "projects/value-flash/src/test.ts": [
@@ -412,7 +518,7 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "projects/value-flash/src/lib/formatters/index.ts",
-                    "type": "object",
+                    "type": "BasicFormatters",
                     "defaultValue": "{\r\n  default: defaultFormatter,\r\n  number: numberFormatter,\r\n  currency: currencyFormatter,\r\n  percentage: percentageFormatter,\r\n}"
                 },
                 {
@@ -438,6 +544,15 @@
         "groupedTypeAliases": {
             "projects/value-flash/src/lib/formatters/index.ts": [
                 {
+                    "name": "BasicFormatters",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "",
+                    "file": "projects/value-flash/src/lib/formatters/index.ts",
+                    "description": "",
+                    "kind": 176
+                },
+                {
                     "name": "Formatter",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
@@ -445,13 +560,22 @@
                     "file": "projects/value-flash/src/lib/formatters/index.ts",
                     "description": "",
                     "kind": 162
+                },
+                {
+                    "name": "FormatterType",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"currency\" | \"percentage\" | \"number\" | \"default\"",
+                    "file": "projects/value-flash/src/lib/formatters/index.ts",
+                    "description": "",
+                    "kind": 168
                 }
             ]
         }
     },
     "routes": [],
     "coverage": {
-        "count": 5,
+        "count": 3,
         "status": "low",
         "files": [
             {
@@ -538,7 +662,57 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Basic",
+                "name": "BespokeFormatter",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/ValueFlash.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "CurrencyFormatter",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/ValueFlash.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "CustomColors",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/ValueFlash.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/ValueFlash.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "NumberFormatter",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/ValueFlash.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "PercentageFormatter",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
