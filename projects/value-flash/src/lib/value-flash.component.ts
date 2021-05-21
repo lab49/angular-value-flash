@@ -51,7 +51,7 @@ export class ValueFlashComponent implements OnInit, OnChanges {
    * Custom CSS transition property.
    */
   @Input()
-  transition?: string;
+  public transition?: string;
   /**
    * Transition length, in milliseconds.
    */
@@ -129,7 +129,7 @@ export class ValueFlashComponent implements OnInit, OnChanges {
   // #region Private Methods (1)
 
   private clearFlashingState() {
-    this.valueHolder.style.transition = `background-color ${this.transitionLength}ms ease-in-out`;
+    this.valueHolder.style.transition = this.transition ?? `background-color ${this.transitionLength}ms ease-in-out`;
     this.valueHolder.classList.remove(`${this.stylePrefix}--flashing-down`);
     this.valueHolder.classList.remove(`${this.stylePrefix}--flashing-up`);
     this.valueHolder.style.backgroundColor = '';

@@ -18,9 +18,9 @@ export default {
 // Note: This will copy lifecycle hooks as well as props. That's why we have to exclude them.
 const Template: Story<ValueFlashComponent> = (args: ValueFlashComponent) => {
   console.log(args);
-  const { value, upColor, downColor, stylePrefix, timeout, transitionLength, formatter, formatterFn } = args;
+  const { value, upColor, downColor, stylePrefix, timeout, transitionLength, transition, formatter, formatterFn } = args;
   return {
-    props: { value, upColor, downColor, stylePrefix, timeout, transitionLength, formatter, formatterFn },
+    props: { value, upColor, downColor, stylePrefix, timeout, transitionLength, transition, formatter, formatterFn },
   };
 };
 
@@ -52,4 +52,10 @@ export const NumberFormatter = Template.bind({});
 NumberFormatter.args = {
   value: 42,
   formatter: 'currency'
+};
+
+export const CustomTransition = Template.bind({});
+CustomTransition.args = {
+  value: 42,
+  transition: 'background-color 2s linear'
 };
