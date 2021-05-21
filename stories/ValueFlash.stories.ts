@@ -1,18 +1,31 @@
 // also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/angular/types-6-0';
+import { Story, Meta, moduleMetadata } from '@storybook/angular';
 import { ValueFlashComponent } from 'projects/value-flash/src/public-api';
 
 export default {
   title: 'Components/Value Flash',
   component: ValueFlashComponent,
   argTypes: {},
+  decorators: [
+    moduleMetadata({
+      declarations: [ValueFlashComponent],
+      imports: [],
+    }),
+  ],
 } as Meta;
 
-const Template: Story<ValueFlashComponent> = (args: ValueFlashComponent) => ({
-  props: args,
-});
+// Note: This will copy lifecycle hooks as well as props. That's why we have to exclude them.
+const Template: Story<ValueFlashComponent> = (args: ValueFlashComponent) => {
+  console.log(args);
+  const { value, upColor, downColor, stylePrefix, timeout, transitionLength, formatter, formatterFn } = args;
+  return {
+    props: { value, upColor, downColor, stylePrefix, timeout, transitionLength, formatter, formatterFn },
+  };
+};
 
 export const Basic = Template.bind({});
 Basic.args = {
-    value: 1
+  value: 1,
+  upColor: '#73eb73',
+  downColor: '#ff8b8b',
 };
