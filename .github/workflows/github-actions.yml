@@ -4,6 +4,5 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - node/install
-      - node/install-packages
+      - run: npm install
       - run: npm run lint
