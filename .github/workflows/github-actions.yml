@@ -1,0 +1,9 @@
+name: Angular Value Flash CI/CD
+on: [push]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - node/install
+      - node/install-packages
+      - run: npm run lint
