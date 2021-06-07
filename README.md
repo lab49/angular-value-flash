@@ -96,6 +96,8 @@ These items are very high level right now. Further discussion and proper roadmap
 - [ ] Create a feature roadmap.
 - [ ] Publish code coverage to codecov.io.
 - [ ] Finanlize README.md
+- [ ] Complete Chromatic setup and incorporate into CI/CD.
+- [ ] Expand Storybook demos.
 
 ## Sponsored by Lab49
 
