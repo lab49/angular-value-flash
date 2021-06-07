@@ -1,27 +1,90 @@
-# AngularValueFlash
+# @lab49/angular-value-flash
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.13.
+`react-value-flash` will display a flashed value on screen based on some value change. This pattern is extremely common in financial applications, and at Lab49, we're focused on the finance industry.
 
-## Development server
+Incorporate this component into your application and pass along a number. As that number changes, this component will briefly flash a color, letting the user know the number has changed. By default, this component will flash green when the value changes up, or red when the value changes down.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Not only are these colors configurable, but the properties of the flash itself and the formatting of the value are configurable as well.
 
-## Code scaffolding
+Furthermore, this component doesn't come with any styles, but does provide plenty of hooks to add your own styles. Even though flash color and transition properties are configurable as props, you can still use the generated classnames (which are also configurable) to add your own unique styles.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This component is perfect for:
 
-## Build
+- Trading platforms
+- Analytics dashboards
+- Monitoring dashboards
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Features
 
-## Running unit tests
+- Small, simple, configurable, performant
+- Maintained by a team of finance industry professionals
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Table of contents
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+- [Demo](#demo)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API](#api)
+	- [`Flash`](#Flash)
+  - [`Props`](#Props)
+  - [`FlashDirection`](#FlashDirection)
+- [Extra](#extra)
+- [License](#License)
+- [TODO](#TODO)
 
-## Further help
+## Demo
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Hosted demo: TBD
+
+you can also run the demo locally.  To get started:
+
+```sh
+git clone git@github.com:lab49/angular-value-flash.git
+npm install
+npm run storybook
+```
+
+###### [⇡ Top](#table-of-contents)
+
+## Usage
+
+```js
+// Include in an @ngModule:
+import { ValueFlashModule } from 'angular-value-flash';
+...
+@NgModule({
+  imports: [
+    ValueFlashModule
+  ],
+  ...
+
+// Use in a component template:
+<lab49-value-flash
+  value="20000">
+</lab49-value-flash>
+```
+
+###### [⇡ Top](#table-of-contents)
+
+## License
+
+MIT @ [Lab49](https://lab49.com)
+
+###### [⇡ Top](#table-of-contents)
+
+## TODO
+
+These items are very high level right now. Further discussion and proper roadmap planning will happen in GitHub issues and projects.
+
+- [ ] Incorporate linting and unit tests into GitHub Action CI builds
+- [ ] Finalize CI process for publishing
+- [ ] Add a code of conduct.
+- [ ] Add a contributing guide.
+- [ ] Create a feature roadmap.
+
+## Sponsored by Lab49
+
+<a href="https://lab49.com">
+  <img src="https://www.lab49.com/wp-content/uploads/2020/06/logo.svg" />
+</a>
