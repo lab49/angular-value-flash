@@ -28,7 +28,7 @@ describe('ValueFlashComponent', () => {
     expect(component.usedFormatter).toBe(formatters.default);
   });
 
-  for (let formatter in formatters) {
+  for (const formatter in formatters) {
     it(`should use the provided formatter when its passed in the formatter input: ${formatter}`, () => {
       const formatterFn: Formatter = formatters[formatter as FormatterType];
       component.formatter = formatter as FormatterType;
@@ -40,6 +40,6 @@ describe('ValueFlashComponent', () => {
     const formatterFn: Formatter = (num: number) => (num + '🤑');
     component.formatterFn = formatterFn;
     expect(component.usedFormatter).toBe(formatterFn);
-    expect(component.formattedValue).toBe("42🤑")
+    expect(component.formattedValue).toBe('42🤑');
   });
 });
