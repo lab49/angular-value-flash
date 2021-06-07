@@ -24,6 +24,9 @@
       "value-flash": [
         "dist/value-flash/value-flash",
         "dist/value-flash"
+      ],
+      "@angular/*": [
+        "./node_modules/@angular/*"
       ]
     }
   },
