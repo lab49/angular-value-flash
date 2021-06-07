@@ -1,27 +1,11 @@
 {
   "name": "@lab49/angular-value-flash",
-  "version": "0.0.3",
-  "description": "Flash on value change. Perfect for financial applicaitons.",
-  "license": "MIT",
-  "repository": "@lab49/angular-value-flash",
-  "bugs": {
-    "url": "https://github.com/lab49/angular-value-flash/issues"
-  },
-  "homepage": "https://github.com/lab49/angular-value-flash",
-  "keywords": [
-    "angular",
-    "finance",
-    "fintech",
-    "streaming",
-    "realtime",
-    "javascript",
-    "typescript"
-  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "build:prod": "ng build --prod",
+    "publish:lib": "npm publish dist/value-flash",
     "test": "ng test",
     "lint": "ng lint",
     "pack": "cd dist/value-flash && npm pack",
