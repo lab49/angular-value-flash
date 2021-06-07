@@ -1,3 +1,4 @@
+name: Angular Value Flash npm publish
 on:
   release:
     types: [created]
