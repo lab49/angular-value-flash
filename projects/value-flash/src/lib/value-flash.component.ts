@@ -80,11 +80,11 @@ export class ValueFlashComponent implements OnInit, OnChanges {
 
   // #region Public Accessors (2)
 
-  public get formattedValue() {
+  public get formattedValue(): any {
     return this.usedFormatter(this.value);
   }
 
-  public get usedFormatter() {
+  public get usedFormatter(): any {
     return this.formatterFn ?? formatters[this.formatter];
   }
 
@@ -92,7 +92,7 @@ export class ValueFlashComponent implements OnInit, OnChanges {
 
   // #region Private Accessors (1)
 
-  private get valueHolder() {
+  private get valueHolder(): HTMLElement {
     return this.valueHolderRef.nativeElement;
   }
 
@@ -100,7 +100,7 @@ export class ValueFlashComponent implements OnInit, OnChanges {
 
   // #region Public Methods (3)
 
-  public handleValueChange(valueChange: SimpleChange) {
+  public handleValueChange(valueChange: SimpleChange): void {
     this.valueHolder.style.transition = '';
     if (valueChange.currentValue > valueChange.previousValue) {
       this.valueHolder.classList.add(`${this.stylePrefix}--flashing-up`);
@@ -116,8 +116,8 @@ export class ValueFlashComponent implements OnInit, OnChanges {
     );
   }
 
-  public ngOnChanges(changes: SimpleChanges) {
-    if (changes.value && changes.value.previousValue != undefined) {
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (changes.value && changes.value.previousValue !== undefined) {
       this.handleValueChange(changes.value);
     }
   }
@@ -128,7 +128,7 @@ export class ValueFlashComponent implements OnInit, OnChanges {
 
   // #region Private Methods (1)
 
-  private clearFlashingState() {
+  private clearFlashingState(): void {
     this.valueHolder.style.transition = this.transition ?? `background-color ${this.transitionLength}ms ease-in-out`;
     this.valueHolder.classList.remove(`${this.stylePrefix}--flashing-down`);
     this.valueHolder.classList.remove(`${this.stylePrefix}--flashing-up`);
