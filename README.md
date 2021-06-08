@@ -1,6 +1,6 @@
 # @lab49/angular-value-flash
 
-`react-value-flash` will display a flashed value on screen based on some value change. This pattern is extremely common in financial applications, and at Lab49, we're focused on the finance industry.
+`angular-value-flash` will display a flashed value on screen based on some value change. This pattern is extremely common in financial applications, and at Lab49, we're focused on the finance industry.
 
 Incorporate this component into your application and pass along a number. As that number changes, this component will briefly flash a color, letting the user know the number has changed. By default, this component will flash green when the value changes up, or red when the value changes down.
 
@@ -95,7 +95,7 @@ These items are very high level right now. Further discussion and proper roadmap
 - [ ] Add a contributing guide.
 - [ ] Create a feature roadmap.
 - [ ] Publish code coverage to codecov.io.
-- [ ] Finanlize README.md
+- [ ] Finanlize README.md (logo, coverage/version link info, API documentation).
 - [ ] Complete Chromatic setup and incorporate into CI/CD.
 - [ ] Expand Storybook demos.
 

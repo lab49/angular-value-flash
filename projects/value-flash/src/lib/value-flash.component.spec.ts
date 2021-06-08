@@ -4,9 +4,10 @@ import { By } from '@angular/platform-browser';
 import { Formatter, formatters, FormatterType } from './formatters';
 import { ValueFlashComponent } from './value-flash.component';
 
+const parentTemplate = '<lab49-value-flash [value]="value"></lab49-value-flash>';
 @Component({
   selector: 'lab49-parent-test-component',
-  template: '<lab49-value-flash [value]="value"></lab49-value-flash>',
+  template: parentTemplate
 })
 export class ParentTestComponent {
   value: number = 0;
@@ -19,7 +20,7 @@ describe('ValueFlashComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ValueFlashComponent, ParentTestComponent],
+      declarations: [ValueFlashComponent, ParentTestComponent]
     }).compileComponents();
   });
 
