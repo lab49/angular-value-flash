@@ -30,19 +30,19 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/value-flash/tsconfig.lib.json",
-              "projects/value-flash/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/value-flash/**/*.ts",
+              "projects/value-flash/**/*.html"
             ]
           }
         }
       }
     }
   },
-  "defaultProject": "value-flash"
+  "defaultProject": "value-flash",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
