@@ -20,6 +20,7 @@ const defaultFormatter = (value: number) => `${value}`;
 
 export const formatters: BasicFormatters = {
   default: defaultFormatter,
+  // eslint-disable-next-line id-blacklist
   number: numberFormatter,
   currency: currencyFormatter,
   percentage: percentageFormatter,
