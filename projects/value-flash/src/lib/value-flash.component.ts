@@ -17,7 +17,7 @@ import { Formatter, formatters, FormatterType } from './formatters';
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [],
 })
-export class ValueFlashComponent implements OnInit, OnChanges {
+export class ValueFlashComponent implements OnChanges {
   // #region Properties (11)
 
   private animationTimeout!: any;
@@ -121,8 +121,6 @@ export class ValueFlashComponent implements OnInit, OnChanges {
       this.handleValueChange(changes.value);
     }
   }
-
-  public ngOnInit(): void {}
 
   // #endregion Public Methods (3)
 
