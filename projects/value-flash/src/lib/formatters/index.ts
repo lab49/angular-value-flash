@@ -2,8 +2,7 @@ export type Formatter = (value: number) => string;
 export type FormatterType = 'currency' | 'percentage' | 'number' | 'default';
 export type BasicFormatters = { [k in FormatterType]: Formatter };
 
-const numberFormatter = (value: number) =>
-  Intl.NumberFormat('en').format(value);
+const numberFormatter = (value: number) => Intl.NumberFormat('en').format(value);
 
 const currencyFormatter = (value: number) =>
   Intl.NumberFormat('en', { style: 'currency', currency: 'USD' }).format(value);

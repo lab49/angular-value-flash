@@ -4,10 +4,10 @@ import { By } from '@angular/platform-browser';
 import { Formatter, formatters, FormatterType } from './formatters';
 import { ValueFlashComponent } from './value-flash.component';
 
-const parentTemplate = '<lab49-value-flash [value]="value"></lab49-value-flash>';
+const parentTemplate = '<value-flash [value]="value"></value-flash>';
 @Component({
-  selector: 'lab49-parent-test-component',
-  template: parentTemplate
+  selector: 'parent-test-component',
+  template: parentTemplate,
 })
 export class ParentTestComponent {
   value = 0;
@@ -20,7 +20,7 @@ describe('ValueFlashComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ValueFlashComponent, ParentTestComponent]
+      declarations: [ValueFlashComponent, ParentTestComponent],
     }).compileComponents();
   });
 
@@ -54,7 +54,7 @@ describe('ValueFlashComponent', () => {
   }
 
   it('should use the explicitly defined formatter function when its passed', () => {
-    const formatterFn: Formatter = (num: number) => (num + '🤑');
+    const formatterFn: Formatter = (num: number) => num + '🤑';
     component.formatterFn = formatterFn;
     expect(component.usedFormatter).toBe(formatterFn);
     expect(component.formattedValue).toBe('42🤑');

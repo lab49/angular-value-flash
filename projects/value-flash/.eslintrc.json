@@ -20,7 +20,6 @@
           "error",
           {
             "type": "element",
-            "prefix": "lab49",
             "style": "kebab-case"
           }
         ],
