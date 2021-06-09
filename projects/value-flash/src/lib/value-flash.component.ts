@@ -41,12 +41,12 @@ export class ValueFlashComponent implements OnInit, OnChanges {
    * Prefix for the CSS selectors in the DOM.
    */
   @Input()
-  public stylePrefix: string = 'rvf_Flash';
+  public stylePrefix = 'rvf_Flash';
   /**
    * Amount of time the flashed state is visible for, in milliseconds.
    */
   @Input()
-  public timeout: number = 200;
+  public timeout = 200;
   /**
    * Custom CSS transition property.
    */
@@ -66,7 +66,7 @@ export class ValueFlashComponent implements OnInit, OnChanges {
    * Value to display. The only required prop.
    */
   @Input()
-  public value: number = 0;
+  public value = 0;
   @ViewChild('valueHolder')
   public valueHolderRef!: ElementRef<HTMLElement>;
 

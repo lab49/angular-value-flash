@@ -10,7 +10,7 @@ const parentTemplate = '<lab49-value-flash [value]="value"></lab49-value-flash>'
   template: parentTemplate
 })
 export class ParentTestComponent {
-  value: number = 0;
+  value = 0;
 }
 
 describe('ValueFlashComponent', () => {
