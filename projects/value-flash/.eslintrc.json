@@ -16,14 +16,6 @@
         "createDefaultProgram": true
       },
       "rules": {
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": "lab49",
-            "style": "camelCase"
-          }
-        ],
         "@angular-eslint/component-selector": [
           "error",
           {
@@ -31,14 +23,16 @@
             "prefix": "lab49",
             "style": "kebab-case"
           }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "valueFlash",
+            "style": "camelCase"
+          }
         ]
       }
-    },
-    {
-      "files": [
-        "*.html"
-      ],
-      "rules": {}
     }
   ]
 }

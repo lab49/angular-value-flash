@@ -20,8 +20,6 @@ import { Formatter, formatters, FormatterType } from './formatters';
 export class ValueFlashComponent implements OnChanges {
   // #region Properties (11)
 
-  private animationTimeout!: any;
-
   /**
    * Color value when the component flashes 'down'.
    */
@@ -69,6 +67,8 @@ export class ValueFlashComponent implements OnChanges {
   public value = 0;
   @ViewChild('valueHolder')
   public valueHolderRef!: ElementRef<HTMLElement>;
+
+  private animationTimeout!: any;
 
   // #endregion Properties (11)
 
