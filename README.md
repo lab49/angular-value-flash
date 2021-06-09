@@ -1,27 +1,109 @@
-# AngularValueFlash
+# @lab49/angular-value-flash
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.13.
+![github action status](https://github.com/lab49/angular-value-flash/actions/workflows/github-actions.yml/badge.svg?branch=main)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-## Development server
+`angular-value-flash` will display a flashed value on screen based on some value change. This pattern is extremely common in financial applications, and at Lab49, we're focused on the finance industry.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Incorporate this component into your application and pass along a number. As that number changes, this component will briefly flash a color, letting the user know the number has changed. By default, this component will flash green when the value changes up, or red when the value changes down.
 
-## Code scaffolding
+Not only are these colors configurable, but the properties of the flash itself and the formatting of the value are configurable as well.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Furthermore, this component doesn't come with any styles, but does provide plenty of hooks to add your own styles. Even though flash color and transition properties are configurable as props, you can still use the generated classnames (which are also configurable) to add your own unique styles.
 
-## Build
+<p align="center">
+  <img src="https://github.com/troy-prince-lab49/angular-value-flash/blob/777e5cbe5f4143122b3ba826db0a955506d0cfc6/.github/motion.gif">
+</p>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+This component is perfect for:
 
-## Running unit tests
+- Trading platforms
+- Analytics dashboards
+- Monitoring dashboards
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Features
 
-## Running end-to-end tests
+- Small, simple, configurable, performant
+- Maintained by a team of finance industry professionals
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+## Table of contents
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- [Demo](#demo)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API](#api)
+- [License](#license)
+- [TODO](#TODO)
+
+## Demo
+
+Hosted demo: TBD
+
+You can also run the demo locally.  To get started:
+
+```sh
+git clone git@github.com:lab49/angular-value-flash.git
+npm install
+npm run storybook
+```
+
+###### [⇡ Top](#table-of-contents)
+
+## Installation
+
+```sh
+npm install @lab49/angular-value-flash
+```
+
+###### [⇡ Top](#table-of-contents)
+
+## Usage
+
+```js
+// Include in an @ngModule:
+import { ValueFlashModule } from 'angular-value-flash';
+...
+@NgModule({
+  imports: [
+    ValueFlashModule
+  ],
+  ...
+
+// Use in a component template:
+<lab49-value-flash
+  value="20000">
+</lab49-value-flash>
+```
+
+###### [⇡ Top](#table-of-contents)
+
+## API
+
+_To be completed_
+
+## License
+
+MIT @ [Lab49](https://lab49.com)
+
+###### [⇡ Top](#table-of-contents)
+
+## TODO
+
+These items are very high level right now. Further discussion and proper roadmap planning will happen in GitHub issues and projects.
+
+- [ ] Incorporate linting and unit tests into GitHub Action CI builds.
+- [ ] Finalize CI process for publishing.
+- [ ] Add a code of conduct.
+- [ ] Add a contributing guide.
+- [ ] Create a feature roadmap.
+- [ ] Publish code coverage to codecov.io.
+- [ ] Finanlize README.md (logo, coverage/version link info, API documentation).
+- [ ] Complete Chromatic setup and incorporate into CI/CD.
+- [ ] Expand Storybook demos.
+
+## Sponsored by Lab49
+
+<a href="https://lab49.com">
+  <img src="https://www.lab49.com/wp-content/uploads/2020/06/logo.svg" />
+</a>

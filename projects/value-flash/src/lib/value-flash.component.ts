@@ -17,10 +17,8 @@ import { Formatter, formatters, FormatterType } from './formatters';
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [],
 })
-export class ValueFlashComponent implements OnInit, OnChanges {
+export class ValueFlashComponent implements OnChanges {
   // #region Properties (11)
-
-  private animationTimeout!: any;
 
   /**
    * Color value when the component flashes 'down'.
@@ -41,12 +39,12 @@ export class ValueFlashComponent implements OnInit, OnChanges {
    * Prefix for the CSS selectors in the DOM.
    */
   @Input()
-  public stylePrefix: string = 'rvf_Flash';
+  public stylePrefix = 'rvf_Flash';
   /**
    * Amount of time the flashed state is visible for, in milliseconds.
    */
   @Input()
-  public timeout: number = 200;
+  public timeout = 200;
   /**
    * Custom CSS transition property.
    */
@@ -66,9 +64,11 @@ export class ValueFlashComponent implements OnInit, OnChanges {
    * Value to display. The only required prop.
    */
   @Input()
-  public value: number = 0;
+  public value = 0;
   @ViewChild('valueHolder')
   public valueHolderRef!: ElementRef<HTMLElement>;
+
+  private animationTimeout!: any;
 
   // #endregion Properties (11)
 
@@ -80,11 +80,11 @@ export class ValueFlashComponent implements OnInit, OnChanges {
 
   // #region Public Accessors (2)
 
-  public get formattedValue() {
+  public get formattedValue(): any {
     return this.usedFormatter(this.value);
   }
 
-  public get usedFormatter() {
+  public get usedFormatter(): any {
     return this.formatterFn ?? formatters[this.formatter];
   }
 
@@ -92,7 +92,7 @@ export class ValueFlashComponent implements OnInit, OnChanges {
 
   // #region Private Accessors (1)
 
-  private get valueHolder() {
+  private get valueHolder(): HTMLElement {
     return this.valueHolderRef.nativeElement;
   }
 
@@ -100,7 +100,7 @@ export class ValueFlashComponent implements OnInit, OnChanges {
 
   // #region Public Methods (3)
 
-  public handleValueChange(valueChange: SimpleChange) {
+  public handleValueChange(valueChange: SimpleChange): void {
     this.valueHolder.style.transition = '';
     if (valueChange.currentValue > valueChange.previousValue) {
       this.valueHolder.classList.add(`${this.stylePrefix}--flashing-up`);
@@ -116,19 +116,17 @@ export class ValueFlashComponent implements OnInit, OnChanges {
     );
   }
 
-  public ngOnChanges(changes: SimpleChanges) {
-    if (changes.value && changes.value.previousValue != undefined) {
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (changes.value && changes.value.previousValue !== undefined) {
       this.handleValueChange(changes.value);
     }
   }
-
-  public ngOnInit(): void {}
 
   // #endregion Public Methods (3)
 
   // #region Private Methods (1)
 
-  private clearFlashingState() {
+  private clearFlashingState(): void {
     this.valueHolder.style.transition = this.transition ?? `background-color ${this.transitionLength}ms ease-in-out`;
     this.valueHolder.classList.remove(`${this.stylePrefix}--flashing-down`);
     this.valueHolder.classList.remove(`${this.stylePrefix}--flashing-up`);

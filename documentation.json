@@ -386,7 +386,7 @@
                 "subtype": "variable",
                 "file": "stories/ValueFlash.stories.ts",
                 "type": "Story<ValueFlashComponent>",
-                "defaultValue": "(args: ValueFlashComponent) => {\r\n  console.log(args);\r\n  const { value, upColor, downColor, stylePrefix, timeout, transitionLength, formatter, formatterFn } = args;\r\n  return {\r\n    props: { value, upColor, downColor, stylePrefix, timeout, transitionLength, formatter, formatterFn },\r\n  };\r\n}"
+                "defaultValue": "(args: ValueFlashComponent) => {\r\n  console.log(args);\r\n  const { value, upColor, downColor, stylePrefix, timeout, transitionLength, transition, formatter, formatterFn } = args;\r\n  return {\r\n    props: { value, upColor, downColor, stylePrefix, timeout, transitionLength, transition, formatter, formatterFn },\r\n  };\r\n}"
             }
         ],
         "functions": [],
@@ -535,7 +535,7 @@
                     "subtype": "variable",
                     "file": "stories/ValueFlash.stories.ts",
                     "type": "Story<ValueFlashComponent>",
-                    "defaultValue": "(args: ValueFlashComponent) => {\r\n  console.log(args);\r\n  const { value, upColor, downColor, stylePrefix, timeout, transitionLength, formatter, formatterFn } = args;\r\n  return {\r\n    props: { value, upColor, downColor, stylePrefix, timeout, transitionLength, formatter, formatterFn },\r\n  };\r\n}"
+                    "defaultValue": "(args: ValueFlashComponent) => {\r\n  console.log(args);\r\n  const { value, upColor, downColor, stylePrefix, timeout, transitionLength, transition, formatter, formatterFn } = args;\r\n  return {\r\n    props: { value, upColor, downColor, stylePrefix, timeout, transitionLength, transition, formatter, formatterFn },\r\n  };\r\n}"
                 }
             ]
         },
