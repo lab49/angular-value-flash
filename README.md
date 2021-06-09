@@ -1,5 +1,8 @@
 # @lab49/angular-value-flash
 
+![github action status](https://github.com/lab49/angular-value-flash/actions/workflows/github-actions.yml/badge.svg?branch=main)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
 `angular-value-flash` will display a flashed value on screen based on some value change. This pattern is extremely common in financial applications, and at Lab49, we're focused on the finance industry.
 
 Incorporate this component into your application and pass along a number. As that number changes, this component will briefly flash a color, letting the user know the number has changed. By default, this component will flash green when the value changes up, or red when the value changes down.
