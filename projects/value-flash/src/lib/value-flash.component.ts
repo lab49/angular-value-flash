@@ -102,10 +102,16 @@ export class ValueFlashComponent implements OnChanges {
   public handleValueChange(valueChange: SimpleChange): void {
     this.valueHolder.style.transition = '';
     if (valueChange.currentValue > valueChange.previousValue) {
-      this.valueHolder.classList.add(`${this.stylePrefix}--flashing-up`);
+      this.valueHolder.classList.add(
+        `${this.stylePrefix}--flashing-up`,
+        `${this.stylePrefix}--flashing`,
+      );
       this.valueHolder.style.backgroundColor = this.upColor;
     } else if (valueChange.currentValue < valueChange.previousValue) {
-      this.valueHolder.classList.add(`${this.stylePrefix}--flashing-down`);
+      this.valueHolder.classList.add(
+        `${this.stylePrefix}--flashing-down`,
+        `${this.stylePrefix}--flashing`,
+      );
       this.valueHolder.style.backgroundColor = this.downColor;
     }
     clearTimeout(this.animationTimeout);
@@ -125,8 +131,11 @@ export class ValueFlashComponent implements OnChanges {
   private clearFlashingState(): void {
     this.valueHolder.style.transition =
       this.transition ?? `background-color ${this.transitionLength}ms ease-in-out`;
-    this.valueHolder.classList.remove(`${this.stylePrefix}--flashing-down`);
-    this.valueHolder.classList.remove(`${this.stylePrefix}--flashing-up`);
+    this.valueHolder.classList.remove(
+      `${this.stylePrefix}--flashing-down`,
+      `${this.stylePrefix}--flashing-up`,
+      `${this.stylePrefix}--flashing`,
+    );
     this.valueHolder.style.backgroundColor = '';
   }
 
