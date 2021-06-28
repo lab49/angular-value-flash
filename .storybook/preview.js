@@ -1,4 +1,4 @@
-import '!style-loader!css-loader!sass-loader!../src/styles/global.scss';
+import '!style-loader!css-loader!sass-loader!../stories/styles/make-it-nice-theme.scss';
 import { setCompodocJson } from "@storybook/addon-docs/angular";
 import docJson from "../documentation.json";
 setCompodocJson(docJson);

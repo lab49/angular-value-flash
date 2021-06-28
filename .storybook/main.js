@@ -14,7 +14,7 @@ module.exports = {
     config.module.rules.push({
       test: /\.scss$/,
       use: ['style-loader', 'css-loader', 'sass-loader'],
-      include: path.resolve(__dirname, '../src/styles/'),
+      include: path.resolve(__dirname, '../stories/styles/'),
     });
     return config;
   },
