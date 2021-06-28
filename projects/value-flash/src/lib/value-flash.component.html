@@ -1,1 +1,3 @@
-<div #valueHolder>{{ formattedValue }}</div>
+<div [ngClass]="stylePrefix" #valueHolder>
+  <span [ngClass]="stylePrefix + '__value'">{{ formattedValue }}</span>
+</div>

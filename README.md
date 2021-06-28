@@ -1,4 +1,4 @@
-# @lab49/angular-value-flash
+# angular-value-flash
 
 ![github action status](https://github.com/lab49/angular-value-flash/actions/workflows/github-actions.yml/badge.svg?branch=main)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
@@ -12,7 +12,7 @@ Not only are these colors configurable, but the properties of the flash itself a
 Furthermore, this component doesn't come with any styles, but does provide plenty of hooks to add your own styles. Even though flash color and transition properties are configurable as props, you can still use the generated classnames (which are also configurable) to add your own unique styles.
 
 <p align="center">
-  <img src="https://github.com/troy-prince-lab49/angular-value-flash/blob/777e5cbe5f4143122b3ba826db0a955506d0cfc6/.github/motion.gif">
+  <img src="https://github.com/lab49/angular-value-flash/blob/e7bfdca7c3de7004f0762e262b1dc6ca2cb12c05/.github/motion.gif">
 </p>
 
 This component is perfect for:
@@ -53,7 +53,7 @@ npm run storybook
 ## Installation
 
 ```sh
-npm install @lab49/angular-value-flash
+npm install angular-value-flash
 ```
 
 ###### [⇡ Top](#table-of-contents)
@@ -69,11 +69,13 @@ import { ValueFlashModule } from 'angular-value-flash';
     ValueFlashModule
   ],
   ...
+```
 
-// Use in a component template:
-<lab49-value-flash
-  value="20000">
-</lab49-value-flash>
+```html
+<!-- Use in a component template: -->
+<value-flash
+  [value]="20000">
+</value-flash>
 ```
 
 ###### [⇡ Top](#table-of-contents)

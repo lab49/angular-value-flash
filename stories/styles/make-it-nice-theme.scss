@@ -1,0 +1,41 @@
+.make-it-nice {
+  .rvf_Flash {
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 3px;
+    display: inline-flex;
+    margin: 50px;
+    width: 150px;
+    padding: 20px 40px 25px;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont;
+    font-size: 42px;
+    font-weight: 200;
+    box-shadow: 0 11px 17px -8px rgba(0, 0, 0, 0.3);
+    transition-property: background-color, box-shadow, border-color !important;
+  }
+
+  .rvf_Flash:hover {
+    box-shadow: 0 11px 14px -11px rgba(0, 0, 0, 0.3);
+  }
+
+  .rvf_Flash:hover:not(.rvf_Flash--flashing) {
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+
+  .rvf_Flash__value {
+    transition: color .1s ease-in-out;
+  }
+
+  .rvf_Flash--flashing-up {
+    border-color: #07b357;
+  }
+
+  .rvf_Flash--flashing-down {
+    border-color: #912b19;
+  }
+
+  .rvf_Flash--flashing .rvf_Flash__value {
+    color: #fff;
+  }
+}

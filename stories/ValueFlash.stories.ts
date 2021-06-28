@@ -1,11 +1,15 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* Disabled because storybook variable names are not follow convention */
+
 // also exported from '@storybook/angular' if you can deal with breaking changes in 6.1
-import { Story, Meta, moduleMetadata } from '@storybook/angular';
+import { Story, Meta, moduleMetadata, componentWrapperDecorator } from '@storybook/angular';
 import { ValueFlashComponent } from 'projects/value-flash/src/public-api';
 
 export default {
   title: 'Components/Value Flash',
   component: ValueFlashComponent,
   argTypes: {
+    value: { control: { type: 'number' } },
   },
   decorators: [
     moduleMetadata({
@@ -17,10 +21,29 @@ export default {
 
 // Note: This will copy lifecycle hooks as well as props. That's why we have to exclude them.
 const Template: Story<ValueFlashComponent> = (args: ValueFlashComponent) => {
-  console.log(args);
-  const { value, upColor, downColor, stylePrefix, timeout, transitionLength, transition, formatter, formatterFn } = args;
+  const {
+    value,
+    upColor,
+    downColor,
+    stylePrefix,
+    timeout,
+    transitionLength,
+    transition,
+    formatter,
+    formatterFn,
+  } = args;
   return {
-    props: { value, upColor, downColor, stylePrefix, timeout, transitionLength, transition, formatter, formatterFn },
+    props: {
+      value,
+      upColor,
+      downColor,
+      stylePrefix,
+      timeout,
+      transitionLength,
+      transition,
+      formatter,
+      formatterFn,
+    },
   };
 };
 
@@ -39,23 +62,32 @@ CustomColors.args = {
 export const PercentageFormatter = Template.bind({});
 PercentageFormatter.args = {
   value: 42,
-  formatter: 'percentage'
+  formatter: 'percentage',
 };
 
 export const CurrencyFormatter = Template.bind({});
 CurrencyFormatter.args = {
   value: 42,
-  formatter: 'currency'
+  formatter: 'currency',
 };
 
 export const NumberFormatter = Template.bind({});
 NumberFormatter.args = {
   value: 42,
-  formatter: 'currency'
+  formatter: 'currency',
 };
 
 export const CustomTransition = Template.bind({});
 CustomTransition.args = {
   value: 42,
-  transition: 'background-color 2s linear'
+  transition: 'background-color 2s linear',
 };
+
+export const MakeItNice = Template.bind({});
+MakeItNice.decorators = [
+  componentWrapperDecorator((story) => {
+    return `<div class="make-it-nice">
+      ${story}
+    </div>`;
+  }),
+];

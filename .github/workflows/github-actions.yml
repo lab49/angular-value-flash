@@ -1,9 +1,21 @@
 name: Angular Value Flash CI/CD
 on: [push]
 jobs:
-  lint:
+  on-push-actions:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: npm install
-      - run: npm run lint
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Required to retrieve git history for Chromatic
+      - name: Install dependencies
+        run: npm install
+      - name: Lint
+        run: npm run lint
+      - name: Test
+        run: npm run test:headless
+      - name: Chromatic
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: "02c78aa7d86f"

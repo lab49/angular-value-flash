@@ -4,7 +4,6 @@ import {
   ElementRef,
   Input,
   OnChanges,
-  OnInit,
   SimpleChange,
   SimpleChanges,
   ViewChild,
@@ -12,7 +11,7 @@ import {
 import { Formatter, formatters, FormatterType } from './formatters';
 
 @Component({
-  selector: 'lab49-value-flash',
+  selector: 'value-flash',
   templateUrl: './value-flash.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [],
@@ -103,17 +102,20 @@ export class ValueFlashComponent implements OnChanges {
   public handleValueChange(valueChange: SimpleChange): void {
     this.valueHolder.style.transition = '';
     if (valueChange.currentValue > valueChange.previousValue) {
-      this.valueHolder.classList.add(`${this.stylePrefix}--flashing-up`);
+      this.valueHolder.classList.add(
+        `${this.stylePrefix}--flashing-up`,
+        `${this.stylePrefix}--flashing`,
+      );
       this.valueHolder.style.backgroundColor = this.upColor;
     } else if (valueChange.currentValue < valueChange.previousValue) {
-      this.valueHolder.classList.add(`${this.stylePrefix}--flashing-down`);
+      this.valueHolder.classList.add(
+        `${this.stylePrefix}--flashing-down`,
+        `${this.stylePrefix}--flashing`,
+      );
       this.valueHolder.style.backgroundColor = this.downColor;
     }
     clearTimeout(this.animationTimeout);
-    this.animationTimeout = setTimeout(
-      () => this.clearFlashingState(),
-      this.timeout
-    );
+    this.animationTimeout = setTimeout(() => this.clearFlashingState(), this.timeout);
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -127,9 +129,13 @@ export class ValueFlashComponent implements OnChanges {
   // #region Private Methods (1)
 
   private clearFlashingState(): void {
-    this.valueHolder.style.transition = this.transition ?? `background-color ${this.transitionLength}ms ease-in-out`;
-    this.valueHolder.classList.remove(`${this.stylePrefix}--flashing-down`);
-    this.valueHolder.classList.remove(`${this.stylePrefix}--flashing-up`);
+    this.valueHolder.style.transition =
+      this.transition ?? `background-color ${this.transitionLength}ms ease-in-out`;
+    this.valueHolder.classList.remove(
+      `${this.stylePrefix}--flashing-down`,
+      `${this.stylePrefix}--flashing-up`,
+      `${this.stylePrefix}--flashing`,
+    );
     this.valueHolder.style.backgroundColor = '';
   }
 

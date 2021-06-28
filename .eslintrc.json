@@ -15,7 +15,9 @@
       "extends": [
         "plugin:@angular-eslint/ng-cli-compat",
         "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:prettier/recommended",
+        "prettier"
       ],
       "rules": {
         "dot-notation": "error",
@@ -25,6 +27,7 @@
         "no-empty-function": "off",
         "no-shadow": "error",
         "no-unused-expressions": "error",
+        "no-unused-vars": "error",
         "no-use-before-define": "off",
         "semi": "error"
       }
@@ -38,6 +41,14 @@
       ],
       "rules": {
         "eqeqeq": "error"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "excludedFiles": ["*inline-template-*.component.html"],
+      "extends": ["plugin:prettier/recommended"],
+      "rules": {
+        "prettier/prettier": ["error", { "parser": "angular" }]
       }
     }
   ]

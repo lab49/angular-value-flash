@@ -1,5 +1,5 @@
 {
-  "name": "@lab49/angular-value-flash",
+  "name": "angular-value-flash",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,11 +8,13 @@
     "chromatic": "npx chromatic --project-token=02c78aa7d86f",
     "publish:lib": "npm publish dist/value-flash --access public",
     "test": "ng test",
+    "test:headless": "ng test --watch=false --browsers=ChromeHeadlessCustom",
     "lint": "ng lint",
     "pack": "cd dist/value-flash && npm pack",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006",
-    "build-storybook": "npm run docs:json && build-storybook"
+    "build-storybook": "npm run docs:json && build-storybook",
+    "prepare": "husky install"
   },
   "peerDependencies": {
     "@angular/common": "~11.2.14",
@@ -47,14 +49,18 @@
     "@storybook/angular": "^6.2.9",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
-    "@typescript-eslint/eslint-plugin": "4.16.1",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
     "@typescript-eslint/parser": "4.16.1",
     "babel-loader": "^8.2.2",
     "chromatic": "^5.9.0",
+    "css-loader": "^5.2.6",
     "eslint": "^7.6.0",
-    "eslint-plugin-import": "latest",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsdoc": "latest",
     "eslint-plugin-prefer-arrow": "latest",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^6.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.1.0",
@@ -62,9 +68,24 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.5.0",
+    "lint-staged": "^11.0.0",
     "ng-packagr": "^11.0.0",
+    "prettier": "^2.3.1",
     "protractor": "~7.0.0",
+    "puppeteer": "^10.0.0",
+    "sass-loader": "^10.1.1",
+    "style-loader": "^2.0.0",
     "ts-node": "~8.3.0",
     "typescript": "~4.1.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged --relative"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix"
+    ]
   }
 }
