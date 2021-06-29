@@ -25,6 +25,7 @@ This component is perfect for:
 
 - Small, simple, configurable, performant
 - Maintained by a team of finance industry professionals
+- Includes linting, prettier & unit test validations
 
 
 ## Table of contents
@@ -38,7 +39,7 @@ This component is perfect for:
 
 ## Demo
 
-Hosted demo: TBD
+Hosted Storybook demo: [https://main--60be66a91843f400393d1747.chromatic.com/](https://main--60be66a91843f400393d1747.chromatic.com/)
 
 You can also run the demo locally.  To get started:
 
@@ -61,7 +62,7 @@ npm install angular-value-flash
 ## Usage
 
 ```js
-// Include in an @ngModule:
+// Include in a module:
 import { ValueFlashModule } from 'angular-value-flash';
 ...
 @NgModule({
@@ -78,11 +79,47 @@ import { ValueFlashModule } from 'angular-value-flash';
 </value-flash>
 ```
 
+There are a number of classnames you can use to add your own styles. This [Storybook example](https://60be66a91843f400393d1747-pyomkpvvzt.chromatic.com/?path=/story/components-value-flash--make-it-nice) demonstrates a potential custom styling.  Find the story source code [here](https://github.com/lab49/angular-value-flash/blob/main/stories/ValueFlash.stories.ts#L86) and the SCSS used [here](https://github.com/lab49/angular-value-flash/blob/main/stories/styles/make-it-nice-theme.scss).  Below is a list of all the available classnames, with the default `.rvf_Flash` prefix.
+
+_Note that due to view encapsulation, these styles will need to be included in global CSS/SCSS files, so be sure to properly scope the styles using wrapper `div` elements or by using specific prefixes as input to the `value-flash` component._
+
+| Class | Description |
+| --- | --- |
+| `.rvf_Flash` | Root DOM node |
+| `.rvf_Flash__value` | Rendered value, direct (and only) child of the root node. |
+| `.rvf_Flash--flashing` | Applied only when the component is in the flashing state. |
+| `.rvf_Flash--flashing-up` | Applied when flashing 'up'. |
+| `.rvf_Flash--flashing-down` | Applied when flashing 'down'. |
+| `.rvf_Flash--positive` | Applied when the value is positive. |
+| `.rvf_Flash--negative` | Applied when the value is negative. |
+
+
 ###### [⇡ Top](#table-of-contents)
 
 ## API
 
-_To be completed_
+### Directives
+
+#### `ValueFlashComponent`
+
+Selector: `value-flash`
+
+Exported As: `ValueFlashComponent`
+
+#### Properties
+
+| Name | Default | Description |
+| --- | --- | --- |
+| @Input() downColor: string | 'red' | Color value when the component flashes 'down'. |
+| @Input() formatter: FormatterType | 'default' | Value display formatter type. Options are: 'currency', 'percentage', 'number', 'default'.  See formatter definititions [here](https://github.com/lab49/angular-value-flash/blob/main/projects/value-flash/src/lib/formatters/index.ts).  |
+| @Input() formatterFn: Formatter | | Custom formatter to use.  Overrides `formatter` input. |
+| @Input() stylePrefix: string | 'rvf_Flash' | Class for root DOM node and prefix for flashing states, positive/negative states, and value node. |
+| @Input() timeout: number | 200 | Amount of time the flashed state is visible for, in milliseconds. |
+| @Input() transition: string | | Custom CSS transition property. |
+| @Input() transitionLength: number | 100 | Transition length, in milliseconds. |
+| @Input() upColor: string | 'green' | Color value when the component flashes 'up'. |
+| @Input() value: number | 0 | Value to display. |
+
 
 ## License
 

@@ -116,6 +116,7 @@ export class ValueFlashComponent implements OnChanges {
     }
     clearTimeout(this.animationTimeout);
     this.animationTimeout = setTimeout(() => this.clearFlashingState(), this.timeout);
+    this.handleValuePositivity();
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -137,6 +138,19 @@ export class ValueFlashComponent implements OnChanges {
       `${this.stylePrefix}--flashing`,
     );
     this.valueHolder.style.backgroundColor = '';
+  }
+
+  private handleValuePositivity() {
+    if (this.value > 0) {
+      this.valueHolder.classList.add(this.stylePrefix + '--positive');
+    } else {
+      this.valueHolder.classList.remove(this.stylePrefix + '--positive');
+    }
+    if (this.value < 0) {
+      this.valueHolder.classList.add(this.stylePrefix + '--negative');
+    } else {
+      this.valueHolder.classList.remove(this.stylePrefix + '--negative');
+    }
   }
 
   // #endregion Private Methods (1)
