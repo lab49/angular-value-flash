@@ -131,15 +131,14 @@ MIT @ [Lab49](https://lab49.com)
 
 These items are very high level right now. Further discussion and proper roadmap planning will happen in GitHub issues and projects.
 
-- [ ] Incorporate linting and unit tests into GitHub Action CI builds.
 - [ ] Finalize CI process for publishing.
 - [ ] Add a code of conduct.
 - [ ] Add a contributing guide.
 - [ ] Create a feature roadmap.
 - [ ] Publish code coverage to codecov.io.
 - [ ] Finanlize README.md (logo, coverage/version link info, API documentation).
-- [ ] Complete Chromatic setup and incorporate into CI/CD.
 - [ ] Expand Storybook demos.
+- [ ] Expand unit tests.
 
 ## Sponsored by Lab49
 
