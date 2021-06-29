@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
@@ -16,7 +17,7 @@ import { Formatter, formatters, FormatterType } from './formatters';
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [],
 })
-export class ValueFlashComponent implements OnChanges {
+export class ValueFlashComponent implements OnChanges, AfterViewInit {
   // #region Properties (11)
 
   /**
@@ -123,6 +124,10 @@ export class ValueFlashComponent implements OnChanges {
     if (changes.value && changes.value.previousValue !== undefined) {
       this.handleValueChange(changes.value);
     }
+  }
+
+  public ngAfterViewInit() {
+    this.handleValuePositivity();
   }
 
   // #endregion Public Methods (3)
