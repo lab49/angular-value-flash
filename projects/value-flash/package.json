@@ -1,6 +1,6 @@
 {
   "name": "angular-value-flash",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Flash on value change. Perfect for financial applicaitons.",
   "license": "MIT",
   "repository": "@lab49/angular-value-flash",

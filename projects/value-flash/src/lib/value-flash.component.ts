@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
@@ -16,7 +17,7 @@ import { Formatter, formatters, FormatterType } from './formatters';
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [],
 })
-export class ValueFlashComponent implements OnChanges {
+export class ValueFlashComponent implements OnChanges, AfterViewInit {
   // #region Properties (11)
 
   /**
@@ -116,12 +117,17 @@ export class ValueFlashComponent implements OnChanges {
     }
     clearTimeout(this.animationTimeout);
     this.animationTimeout = setTimeout(() => this.clearFlashingState(), this.timeout);
+    this.handleValuePositivity();
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes.value && changes.value.previousValue !== undefined) {
       this.handleValueChange(changes.value);
     }
+  }
+
+  public ngAfterViewInit() {
+    this.handleValuePositivity();
   }
 
   // #endregion Public Methods (3)
@@ -137,6 +143,19 @@ export class ValueFlashComponent implements OnChanges {
       `${this.stylePrefix}--flashing`,
     );
     this.valueHolder.style.backgroundColor = '';
+  }
+
+  private handleValuePositivity() {
+    if (this.value > 0) {
+      this.valueHolder.classList.add(this.stylePrefix + '--positive');
+    } else {
+      this.valueHolder.classList.remove(this.stylePrefix + '--positive');
+    }
+    if (this.value < 0) {
+      this.valueHolder.classList.add(this.stylePrefix + '--negative');
+    } else {
+      this.valueHolder.classList.remove(this.stylePrefix + '--negative');
+    }
   }
 
   // #endregion Private Methods (1)
