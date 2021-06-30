@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, DebugElement, ElementRef } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Formatter, formatters, FormatterType } from './formatters';
 import { ValueFlashComponent } from './value-flash.component';
+
+const DEFAULT = 42;
 
 const parentTemplate = '<value-flash [value]="value"></value-flash>';
 @Component({
@@ -10,7 +12,7 @@ const parentTemplate = '<value-flash [value]="value"></value-flash>';
   template: parentTemplate,
 })
 export class ParentTestComponent {
-  value = 0;
+  value = DEFAULT;
 }
 
 describe('ValueFlashComponent', () => {
@@ -28,7 +30,6 @@ describe('ValueFlashComponent', () => {
     fixture = TestBed.createComponent(ParentTestComponent);
     parentComponent = fixture.componentInstance;
     component = fixture.debugElement.query(By.directive(ValueFlashComponent)).componentInstance;
-    parentComponent.value = 42;
     fixture.detectChanges();
   });
 
@@ -37,7 +38,7 @@ describe('ValueFlashComponent', () => {
   });
 
   it('should get the value from the parent', () => {
-    expect(component.value).toEqual(42);
+    expect(component.value).toEqual(DEFAULT);
   });
 
   it('should use the default formatter by default', () => {
@@ -84,4 +85,46 @@ describe('ValueFlashComponent', () => {
     tick(customTimeout - initialCheckTime);
     expect(valueClassList.contains(downClass)).toEqual(false);
   }));
+
+  describe('when considering the classes that indiciate if the value is positive/negative', () => {
+
+    let positiveClass: string, negativeClass: string, initialClass: string|undefined, flashElement: any;
+
+    beforeEach(() => {
+      positiveClass = `${component.stylePrefix}--positive`;
+      negativeClass = `${component.stylePrefix}--negative`;
+      initialClass = DEFAULT > 0 ? positiveClass : DEFAULT < 0 ? negativeClass : undefined;
+      flashElement = fixture.debugElement.query(By.css(`.${component.stylePrefix}`)).nativeElement;
+    })
+
+    it('should have the correct initial class on load', () => {
+      if (initialClass) {
+        expect(flashElement.classList).toContain(initialClass);
+      } else {
+        expect(flashElement.classList).not.toContain(initialClass);
+      }
+    });
+
+    it('should have no class when the value is 0', () => {
+      parentComponent.value = 0;
+      fixture.detectChanges()
+      expect(flashElement.classList).not.toContain(positiveClass);
+      expect(flashElement.classList).not.toContain(negativeClass);
+    })
+
+    it('should have the negative class when the value is negative', () => {
+      parentComponent.value = -1;
+      fixture.detectChanges();
+      expect(flashElement.classList).not.toContain(positiveClass);
+      expect(flashElement.classList).toContain(negativeClass);
+    })
+
+    it('should have the positive class when the value is positive', () => {
+      parentComponent.value = 3;
+      fixture.detectChanges();
+      expect(flashElement.classList).toContain(positiveClass);
+      expect(flashElement.classList).not.toContain(negativeClass);
+    })
+
+  })
 });

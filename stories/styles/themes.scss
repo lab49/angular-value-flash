@@ -39,3 +39,44 @@
     color: #fff;
   }
 }
+
+.positive-negative-indication {
+  .rvf_Flash {
+    border-bottom: 5px solid rgba(0, 0, 0, .1);
+    display: inline-flex;
+    margin: 50px;
+    width: 150px;
+    padding: 20px 40px 25px;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont;
+    font-size: 42px;
+    font-weight: 200;
+    transition-property: font-weight, font-size, border-color !important;
+  }
+
+  .rvf_Flash__value {
+    transition: color .1s ease-in-out;
+  }
+
+  .rvf_Flash--positive {
+    border-color: #07b357;
+  }
+
+  .rvf_Flash--negative {
+    border-color: #912b19;
+  }
+
+  .rvf_Flash--flashing-up {
+    color: #07b357;
+  }
+
+  .rvf_Flash--flashing-down {
+    color: #912b19;
+  }
+
+  .rvf_Flash--flashing .rvf_Flash__value {
+    font-weight: 700;
+    font-size: 42px;
+  }
+}
