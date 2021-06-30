@@ -1,4 +1,4 @@
-import { Component, DebugElement, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Formatter, formatters, FormatterType } from './formatters';
@@ -87,15 +87,17 @@ describe('ValueFlashComponent', () => {
   }));
 
   describe('when considering the classes that indiciate if the value is positive/negative', () => {
-
-    let positiveClass: string, negativeClass: string, initialClass: string|undefined, flashElement: any;
+    let positiveClass: string;
+    let negativeClass: string;
+    let initialClass: string | undefined;
+    let flashElement: any;
 
     beforeEach(() => {
       positiveClass = `${component.stylePrefix}--positive`;
       negativeClass = `${component.stylePrefix}--negative`;
       initialClass = DEFAULT > 0 ? positiveClass : DEFAULT < 0 ? negativeClass : undefined;
       flashElement = fixture.debugElement.query(By.css(`.${component.stylePrefix}`)).nativeElement;
-    })
+    });
 
     it('should have the correct initial class on load', () => {
       if (initialClass) {
@@ -107,24 +109,23 @@ describe('ValueFlashComponent', () => {
 
     it('should have no class when the value is 0', () => {
       parentComponent.value = 0;
-      fixture.detectChanges()
+      fixture.detectChanges();
       expect(flashElement.classList).not.toContain(positiveClass);
       expect(flashElement.classList).not.toContain(negativeClass);
-    })
+    });
 
     it('should have the negative class when the value is negative', () => {
       parentComponent.value = -1;
       fixture.detectChanges();
       expect(flashElement.classList).not.toContain(positiveClass);
       expect(flashElement.classList).toContain(negativeClass);
-    })
+    });
 
     it('should have the positive class when the value is positive', () => {
       parentComponent.value = 3;
       fixture.detectChanges();
       expect(flashElement.classList).toContain(positiveClass);
       expect(flashElement.classList).not.toContain(negativeClass);
-    })
-
-  })
+    });
+  });
 });
