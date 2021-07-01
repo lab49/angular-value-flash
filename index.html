@@ -1,0 +1,274 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>angular-value-flash documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	      <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">angular-value-flash documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1 id="angular-value-flash">angular-value-flash</h1>
+<p><img src="https://github.com/lab49/angular-value-flash/actions/workflows/github-actions.yml/badge.svg?branch=main" alt="github action status" class="img-responsive">
+<a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" alt="code style: prettier" class="img-responsive"></a></p>
+<p><code>angular-value-flash</code> will display a flashed value on screen based on some value change. This pattern is extremely common in financial applications, and at Lab49, we&#39;re focused on the finance industry.</p>
+<p>Incorporate this component into your application and pass along a number. As that number changes, this component will briefly flash a color, letting the user know the number has changed. By default, this component will flash green when the value changes up, or red when the value changes down.</p>
+<p>Not only are these colors configurable, but the properties of the flash itself and the formatting of the value are configurable as well.</p>
+<p>Furthermore, this component doesn&#39;t come with any styles, but does provide plenty of hooks to add your own styles. Even though flash color and transition properties are configurable as props, you can still use the generated classnames (which are also configurable) to add your own unique styles.</p>
+<p align="center">
+  <img src="https://github.com/lab49/angular-value-flash/blob/e7bfdca7c3de7004f0762e262b1dc6ca2cb12c05/.github/motion.gif">
+</p>
+
+<p>This component is perfect for:</p>
+<ul>
+<li>Trading platforms</li>
+<li>Analytics dashboards</li>
+<li>Monitoring dashboards</li>
+</ul>
+<h2 id="features">Features</h2>
+<ul>
+<li>Small, simple, configurable, performant</li>
+<li>Maintained by a team of finance industry professionals</li>
+<li>Includes linting, prettier &amp; unit test validations</li>
+</ul>
+<h2 id="table-of-contents">Table of contents</h2>
+<ul>
+<li><a href="#demo">Demo</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#api">API</a></li>
+<li><a href="#license">License</a></li>
+<li><a href="#TODO">TODO</a></li>
+</ul>
+<h2 id="demo">Demo</h2>
+<p>Hosted Storybook demo: <a href="https://main--60be66a91843f400393d1747.chromatic.com/">https://main--60be66a91843f400393d1747.chromatic.com/</a></p>
+<p>You can also run the demo locally.  To get started:</p>
+<div><pre class="line-numbers"><code class="language-sh">git clone git&#64;github.com:lab49/angular-value-flash.git
+npm install
+npm run storybook</code></pre></div><h6 id="⇡-top"><a href="#table-of-contents">⇡ Top</a></h6>
+<h2 id="installation">Installation</h2>
+<div><pre class="line-numbers"><code class="language-sh">npm install angular-value-flash</code></pre></div><h6 id="⇡-top-1"><a href="#table-of-contents">⇡ Top</a></h6>
+<h2 id="usage">Usage</h2>
+<div><pre class="line-numbers"><code class="language-js">// Include in a module:
+import { ValueFlashModule } from &#39;angular-value-flash&#39;;
+...
+&#64;NgModule({
+  imports: [
+    ValueFlashModule
+  ],
+  ...</code></pre></div><div><pre class="line-numbers"><code class="language-html">&lt;!-- Use in a component template: --&gt;
+&lt;value-flash
+  [value]=&quot;20000&quot;&gt;
+&lt;/value-flash&gt;</code></pre></div><p>There are a number of classnames you can use to add your own styles. This <a href="https://60be66a91843f400393d1747-pyomkpvvzt.chromatic.com/?path=/story/components-value-flash--make-it-nice">Storybook example</a> demonstrates a potential custom styling.  Find the story source code <a href="https://github.com/lab49/angular-value-flash/blob/main/stories/ValueFlash.stories.ts#L86">here</a> and the SCSS used <a href="https://github.com/lab49/angular-value-flash/blob/main/stories/styles/themes.scss">here</a>.  Below is a list of all the available classnames, with the default <code>.rvf_Flash</code> prefix.</p>
+<p><em>Note that due to view encapsulation, these styles will need to be included in global CSS/SCSS files, so be sure to properly scope the styles using wrapper <code>div</code> elements or by using specific prefixes as input to the <code>value-flash</code> component.</em></p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th>Class</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.rvf_Flash</code></td>
+<td>Root DOM node</td>
+</tr>
+<tr>
+<td><code>.rvf_Flash__value</code></td>
+<td>Rendered value, direct (and only) child of the root node.</td>
+</tr>
+<tr>
+<td><code>.rvf_Flash--flashing</code></td>
+<td>Applied only when the component is in the flashing state.</td>
+</tr>
+<tr>
+<td><code>.rvf_Flash--flashing-up</code></td>
+<td>Applied when flashing &#39;up&#39;.</td>
+</tr>
+<tr>
+<td><code>.rvf_Flash--flashing-down</code></td>
+<td>Applied when flashing &#39;down&#39;.</td>
+</tr>
+<tr>
+<td><code>.rvf_Flash--positive</code></td>
+<td>Applied when the value is positive.</td>
+</tr>
+<tr>
+<td><code>.rvf_Flash--negative</code></td>
+<td>Applied when the value is negative.</td>
+</tr>
+</tbody>
+</table>
+<h6 id="⇡-top-2"><a href="#table-of-contents">⇡ Top</a></h6>
+<h2 id="api">API</h2>
+<h3 id="directives">Directives</h3>
+<h4 id="valueflashcomponent"><code>ValueFlashComponent</code></h4>
+<p>Selector: <code>value-flash</code></p>
+<p>Exported As: <code>ValueFlashComponent</code></p>
+<h4 id="properties">Properties</h4>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th>Name</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@Input() downColor: string</td>
+<td>&#39;red&#39;</td>
+<td>Color value when the component flashes &#39;down&#39;.</td>
+</tr>
+<tr>
+<td>@Input() formatter: FormatterType</td>
+<td>&#39;default&#39;</td>
+<td>Value display formatter type. Options are: &#39;currency&#39;, &#39;percentage&#39;, &#39;number&#39;, &#39;default&#39;.  See formatter definititions <a href="https://github.com/lab49/angular-value-flash/blob/main/projects/value-flash/src/lib/formatters/index.ts">here</a>.</td>
+</tr>
+<tr>
+<td>@Input() formatterFn: Formatter</td>
+<td></td>
+<td>Custom formatter to use.  Overrides <code>formatter</code> input.</td>
+</tr>
+<tr>
+<td>@Input() stylePrefix: string</td>
+<td>&#39;rvf_Flash&#39;</td>
+<td>Class for root DOM node and prefix for flashing states, positive/negative states, and value node.</td>
+</tr>
+<tr>
+<td>@Input() timeout: number</td>
+<td>200</td>
+<td>Amount of time the flashed state is visible for, in milliseconds.</td>
+</tr>
+<tr>
+<td>@Input() transition: string</td>
+<td></td>
+<td>Custom CSS transition property.</td>
+</tr>
+<tr>
+<td>@Input() transitionLength: number</td>
+<td>100</td>
+<td>Transition length, in milliseconds.</td>
+</tr>
+<tr>
+<td>@Input() upColor: string</td>
+<td>&#39;green&#39;</td>
+<td>Color value when the component flashes &#39;up&#39;.</td>
+</tr>
+<tr>
+<td>@Input() value: number</td>
+<td>0</td>
+<td>Value to display.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="license">License</h2>
+<p>MIT @ <a href="https://lab49.com">Lab49</a></p>
+<h6 id="⇡-top-3"><a href="#table-of-contents">⇡ Top</a></h6>
+<h2 id="todo">TODO</h2>
+<p>These items are very high level right now. Further discussion and proper roadmap planning will happen in GitHub issues and projects.</p>
+<ul>
+<li><input disabled="" type="checkbox"> Finalize CI process for publishing.</li>
+<li><input disabled="" type="checkbox"> Add a code of conduct.</li>
+<li><input disabled="" type="checkbox"> Add a contributing guide.</li>
+<li><input disabled="" type="checkbox"> Create a feature roadmap.</li>
+<li><input disabled="" type="checkbox"> Publish code coverage to codecov.io.</li>
+<li><input disabled="" type="checkbox"> Finanlize README.md (logo, coverage/version link info, API documentation).</li>
+<li><input disabled="" type="checkbox"> Expand Storybook demos.</li>
+<li><input disabled="" type="checkbox"> Expand unit tests.</li>
+</ul>
+<h2 id="sponsored-by-lab49">Sponsored by Lab49</h2>
+<a href="https://lab49.com">
+  <img src="https://www.lab49.com/wp-content/uploads/2020/06/logo.svg" />
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="./js/menu-wc.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
