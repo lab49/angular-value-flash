@@ -79,7 +79,7 @@ import { ValueFlashModule } from 'angular-value-flash';
 </value-flash>
 ```
 
-There are a number of classnames you can use to add your own styles. This [Storybook example](https://60be66a91843f400393d1747-pyomkpvvzt.chromatic.com/?path=/story/components-value-flash--make-it-nice) demonstrates a potential custom styling.  Find the story source code [here](https://github.com/lab49/angular-value-flash/blob/main/stories/ValueFlash.stories.ts#L86) and the SCSS used [here](https://github.com/lab49/angular-value-flash/blob/main/stories/styles/make-it-nice-theme.scss).  Below is a list of all the available classnames, with the default `.rvf_Flash` prefix.
+There are a number of classnames you can use to add your own styles. This [Storybook example](https://60be66a91843f400393d1747-pyomkpvvzt.chromatic.com/?path=/story/components-value-flash--make-it-nice) demonstrates a potential custom styling.  Find the story source code [here](https://github.com/lab49/angular-value-flash/blob/main/stories/ValueFlash.stories.ts#L86) and the SCSS used [here](https://github.com/lab49/angular-value-flash/blob/main/stories/styles/themes.scss).  Below is a list of all the available classnames, with the default `.rvf_Flash` prefix.
 
 _Note that due to view encapsulation, these styles will need to be included in global CSS/SCSS files, so be sure to properly scope the styles using wrapper `div` elements or by using specific prefixes as input to the `value-flash` component._
 

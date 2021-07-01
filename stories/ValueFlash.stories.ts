@@ -91,3 +91,19 @@ MakeItNice.decorators = [
     </div>`;
   }),
 ];
+
+export const PositiveNegativeIndication = Template.bind({});
+PositiveNegativeIndication.decorators = [
+  componentWrapperDecorator((story) => {
+    return `<div class="positive-negative-indication">
+      <p>In this demo, the bottom border indicates a positive or negative number, and the number color flashes to indicate the value change direction.</p>
+      ${story}
+    </div>`;
+  }),
+];
+PositiveNegativeIndication.args = {
+  value: 5,
+  upColor: 'transparent',
+  downColor: 'transparent'
+};
+
