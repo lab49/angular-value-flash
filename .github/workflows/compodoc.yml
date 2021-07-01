@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
       - name: Create Compodocs
         run: npm run docs
       - name: Publish
