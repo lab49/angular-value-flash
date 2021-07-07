@@ -1,0 +1,20 @@
+name: Angular Value Flash deploy compodoc
+on:
+  push:
+    branches:
+      - main
+jobs:
+  publish-compodoc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Create Compodocs
+        run: npm run docs
+      - name: Publish
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: documentation
