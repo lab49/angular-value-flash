@@ -29,12 +29,17 @@ This component is perfect for:
 
 ## Table of contents
 
+- [Compodoc Documentation](#compodoc-documentation)
 - [Demo](#demo)
 - [Installation](#installation)
 - [Usage](#usage)
 - [API](#api)
 - [License](#license)
 - [TODO](#TODO)
+
+## Compodoc Documentation
+
+Full documentation, generated using [Compodoc](https://compodoc.app/): [https://lab49.github.io/angular-value-flash](https://lab49.github.io/angular-value-flash) 
 
 ## Demo
 
@@ -137,7 +142,6 @@ These items are very high level right now. Further discussion and proper roadmap
 - [ ] Finanlize README.md (logo, coverage info).
 - [ ] Expand Storybook demos.
 - [ ] Expand unit tests.
-- [ ] Publish compodoc documentation. 
 
 ## Sponsored by Lab49
 
