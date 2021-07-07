@@ -11,6 +11,7 @@
     "test:headless": "ng test --watch=false --browsers=ChromeHeadlessCustom",
     "lint": "ng lint",
     "pack": "cd dist/value-flash && npm pack",
+    "docs": "npx compodoc -p tsconfig.doc.json",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
     "storybook": "npm run docs:json && start-storybook -p 6006",
     "build-storybook": "npm run docs:json && build-storybook",

@@ -1,0 +1,7 @@
+{
+  "include": ["projects/value-flash/src/**/*.ts"],
+  "exclude": [
+    "projects/value-flash/src/test.ts",
+    "projects/value-flash/src/**/*.spec.ts",
+  ]
+}
