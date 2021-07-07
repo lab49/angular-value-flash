@@ -2,7 +2,7 @@ name: Angular Value Flash deploy compodoc
 on:
   push:
     branches:
-      - compodoc
+      - main
 jobs:
   publish-compodoc:
     runs-on: ubuntu-latest
