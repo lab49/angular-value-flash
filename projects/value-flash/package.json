@@ -1,13 +1,13 @@
 {
   "name": "angular-value-flash",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Flash on value change. Perfect for financial applicaitons.",
   "license": "MIT",
   "repository": "@lab49/angular-value-flash",
   "bugs": {
     "url": "https://github.com/lab49/angular-value-flash/issues"
   },
-  "homepage": "https://github.com/lab49/angular-value-flash",
+  "homepage": "https://lab49.github.io/angular-value-flash",
   "keywords": [
     "angular",
     "finance",

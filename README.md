@@ -1,7 +1,6 @@
 # angular-value-flash
 
-![github action status](https://github.com/lab49/angular-value-flash/actions/workflows/github-actions.yml/badge.svg?branch=main)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+![github action status](https://github.com/lab49/angular-value-flash/actions/workflows/github-actions.yml/badge.svg?branch=main) [![npm version](https://img.shields.io/npm/v/angular-value-flash?label=version&color=%2354C536&logo=npm)](https://www.npmjs.com/package/angular-value-flash) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 
 `angular-value-flash` will display a flashed value on screen based on some value change. This pattern is extremely common in financial applications, and at Lab49, we're focused on the finance industry.
 
@@ -30,12 +29,17 @@ This component is perfect for:
 
 ## Table of contents
 
+- [Compodoc Documentation](#compodoc-documentation)
 - [Demo](#demo)
 - [Installation](#installation)
 - [Usage](#usage)
 - [API](#api)
 - [License](#license)
 - [TODO](#TODO)
+
+## Compodoc Documentation
+
+Full documentation, generated using [Compodoc](https://compodoc.app/): [https://lab49.github.io/angular-value-flash](https://lab49.github.io/angular-value-flash) 
 
 ## Demo
 
@@ -132,11 +136,10 @@ MIT @ [Lab49](https://lab49.com)
 These items are very high level right now. Further discussion and proper roadmap planning will happen in GitHub issues and projects.
 
 - [ ] Finalize CI process for publishing.
-- [ ] Add a code of conduct.
 - [ ] Add a contributing guide.
 - [ ] Create a feature roadmap.
 - [ ] Publish code coverage to codecov.io.
-- [ ] Finanlize README.md (logo, coverage/version link info, API documentation).
+- [ ] Finanlize README.md (logo, coverage info).
 - [ ] Expand Storybook demos.
 - [ ] Expand unit tests.
 
